@@ -26,10 +26,7 @@ clippy = { needless_lifetimes = "allow" }
 [features]
 default = [
     "dim3",
-    "async-collider",
-    "debug-render-3d",
-    "picking-backend",
-    "to-bevy-mesh",
+    "parallel",
 ]
 dim3 = []
 debug-render = ["debug-render-3d"]
@@ -65,15 +62,15 @@ async-collider = [
 to-bevy-mesh = ["bevy/bevy_render", "bevy/bevy_asset"]
 
 [dependencies]
-bevy = { version = "0.19.0", default-features = false, features = ["std"] }
-nalgebra = { version = "0.34.2", features = ["convert-glam032"] }
+bevy = { git = "https://github.com/bevyengine/bevy", rev = "fb89a8649d9b359e53ffb6e5492ebb7c059ac8af", default-features = false, features = ["std"] }
+nalgebra = { version = "0.35", features = ["convert-glam033"] }
 rapier3d = { workspace = true }
 bitflags = "2.10.0"
 log = "0.4"
 serde = { version = "1", features = ["derive"], optional = true }
 
 [dev-dependencies]
-bevy = { version = "0.19.0", default-features = false, features = [
+bevy = { git = "https://github.com/bevyengine/bevy", rev = "fb89a8649d9b359e53ffb6e5492ebb7c059ac8af", default-features = false, features = [
     "bevy_window",
     "x11",
     "tonemapping_luts",
@@ -86,10 +83,6 @@ bevy = { version = "0.19.0", default-features = false, features = [
     "bevy_gizmos_render",
 ] }
 approx = "0.5.1"
-glam = { version = "0.32.1", features = ["approx"] }
-bevy-inspector-egui = "0.37.0"
-bevy_egui = "0.40.0"
-bevy_mod_debugdump = "0.16.0"
 
 [package.metadata.docs.rs]
 # Enable all the features when building the docs on docs.rs

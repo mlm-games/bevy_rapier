@@ -441,7 +441,9 @@ impl<'a> RapierQueryPipeline<'a> {
         &self,
         point: Vect,
     ) -> Option<(Entity, PointProjection, FeatureId)> {
-        let (h, proj, fid) = self.query_pipeline.project_point_and_get_feature(point)?;
+        let (h, proj, fid) = self
+            .query_pipeline
+            .project_point_and_get_feature(point, 0.0)?;
 
         Some((
             self.collider_entity(h),
@@ -622,8 +624,8 @@ impl RapierRigidBodySet {
         let impulse_joint = joints.impulse_joints.get(*joint_handle)?;
         let revolute_joint = impulse_joint.data.as_revolute()?;
 
-        let rb1 = &self.bodies[impulse_joint.body1];
-        let rb2 = &self.bodies[impulse_joint.body2];
+        let rb1 = &self.bodies[impulse_joint.body1()];
+        let rb2 = &self.bodies[impulse_joint.body2()];
         Some(revolute_joint.angle(rb1.rotation(), rb2.rotation()))
     }
 }
