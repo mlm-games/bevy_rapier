@@ -64,15 +64,15 @@ async-collider = [
 to-bevy-mesh = ["bevy/bevy_render", "bevy/bevy_asset"]
 
 [dependencies]
-bevy = { version = "0.19.0", default-features = false, features = ["std"] }
-nalgebra = { version = "0.34.2", features = ["convert-glam032"] }
+bevy = { git = "https://github.com/bevyengine/bevy", rev = "fb89a8649d9b359e53ffb6e5492ebb7c059ac8af", default-features = false, features = ["std"] }
+nalgebra = { version = "0.35", features = ["convert-glam033"] }
 rapier2d = { workspace = true }
 bitflags = "2.10.0"
 log = "0.4"
 serde = { version = "1", features = ["derive"], optional = true }
 
 [dev-dependencies]
-bevy = { version = "0.19.0", default-features = false, features = [
+bevy = { git = "https://github.com/bevyengine/bevy", rev = "fb89a8649d9b359e53ffb6e5492ebb7c059ac8af", default-features = false, features = [
     "x11",
     "bevy_state",
     "bevy_window",
